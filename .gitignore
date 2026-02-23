@@ -16,3 +16,6 @@ Thumbs.db
 
 # application local 설정
 application-local.yml
+
+# DB 정보 설정
+.env

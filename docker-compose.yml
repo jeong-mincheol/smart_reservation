@@ -1,22 +1,19 @@
-version: '3.8'
+version: "3.8"
 
 services:
   mysql:
-    image: mysql:8.0
-    container_name: ticketing-mysql
+    image: mysql:8
+    container_name: mysql-ticket
     restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: ticketing
-      MYSQL_USER: ticket_user
-      MYSQL_PASSWORD: ticket_pass
     ports:
       - "3306:3306"
-    command:
-      --character-set-server=utf8mb4
-      --collation-server=utf8mb4_unicode_ci
+    environment:
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
     volumes:
-      - mysql_data:/var/lib/mysql
+      - mysql-data:/var/lib/mysql
 
 volumes:
-  mysql_data:
+  mysql-data:
